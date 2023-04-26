@@ -1,6 +1,12 @@
 function App() {
   const [melons, setMelons] = React.useState({});
 
+  React.useEffect(() => {
+    fetch("/api/melons")
+      .then((response) => response.json())
+      .then((data) => setMelons(data));
+  }, []);
+
   return (
     <ReactRouterDOM.BrowserRouter>
       <Navbar logo="/static/img/watermelon.png" brand="Ubermelon" />
@@ -19,4 +25,4 @@ function App() {
   );
 }
 
-ReactDOM.render(<App />, document.querySelector('#root'));
+ReactDOM.render(<App />, document.querySelector("#root"));
