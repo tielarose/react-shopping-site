@@ -7,10 +7,8 @@ function App() {
       const newShoppingCart = Object.assign({}, currentShoppingCart);
       if (newShoppingCart[melonCode]) {
         newShoppingCart[melonCode] += 1;
-        console.log("line 10, newShoppingCart is: ", newShoppingCart);
       } else {
         newShoppingCart[melonCode] = 1;
-        console.log("line 13, newShoppingCart is: ", newShoppingCart);
       }
 
       return newShoppingCart;
