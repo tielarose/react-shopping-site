@@ -34,7 +34,7 @@ function App() {
           <AllMelonsPage melons={melons} addMelonToCart={addMelonToCart} />
         </ReactRouterDOM.Route>
         <ReactRouterDOM.Route exact path="/cart">
-          <ShoppingCartPage />
+          <ShoppingCartPage shoppingCart={shoppingCart} melons={melons} />
         </ReactRouterDOM.Route>
       </div>
     </ReactRouterDOM.BrowserRouter>

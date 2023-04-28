@@ -27,6 +27,7 @@ function AllMelonsPage(props) {
 
     melonCards.push(melonCard);
   }
+
   return (
     <React.Fragment>
       <h1>All Melons</h1>
@@ -38,6 +39,28 @@ function AllMelonsPage(props) {
 }
 
 function ShoppingCartPage(props) {
+  const melonsInCart = [];
+  // console.log("line 43, props is: ", props);
+  const { shoppingCart, melons } = props;
+  let totalCost = 0;
+  // console.log(melons["melon_code"]);
+  // console.log("line 47, shoppingCart is: ", shoppingCart);
+  // for (const [code] in Object.keys(shoppingCart)) {
+  //   console.log("line 49, code is: ", code);
+  // }
+
+  for (const code in shoppingCart) {
+    const total = shoppingCart[code] * melons[code].price;
+    totalCost += total;
+    melonsInCart.push(
+      <tr key={code}>
+        <td>{melons[code].name}</td>
+        <td>{shoppingCart[code]}</td>
+        <td>{total.toFixed(2)}</td>
+      </tr>
+    );
+  }
+
   return (
     <React.Fragment>
       <h1>Shopping Cart</h1>
@@ -49,10 +72,11 @@ function ShoppingCartPage(props) {
               <th>Quantity</th>
               <th>Total</th>
             </tr>
+            {melonsInCart}
           </thead>
           <tbody />
         </table>
-        <p className="lead">Total: ${(0).toFixed(2)}</p>
+        <p className="lead">Total: ${totalCost.toFixed(2)}</p>
       </div>
     </React.Fragment>
   );
