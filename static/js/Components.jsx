@@ -16,11 +16,11 @@ function AllMelonsPage(props) {
   for (const melon of Object.values(melons)) {
     const melonCard = (
       <MelonCard
-        key="cren"
-        code="cren"
-        name="Crenshaw"
-        imgUrl="https://fellowship.hackbrightacademy.com/materials/exercises/images/melons/crenshaw.png"
-        price={2}
+        key={melon.melon_code}
+        code={melon.melon_code}
+        name={melon.name}
+        imgUrl={melon.image_url}
+        price={melon.price}
       />
     );
 
@@ -62,7 +62,10 @@ function Navbar(props) {
 
   return (
     <nav>
-      <ReactRouterDOM.Link to="/" className="havbar-brand d-flex justify-content-center">
+      <ReactRouterDOM.Link
+        to="/"
+        className="havbar-brand d-flex justify-content-center"
+      >
         <img src={logo} height="30" alt="logo" />
         <span>{brand}</span>
       </ReactRouterDOM.Link>
@@ -103,7 +106,9 @@ function MelonCard(props) {
       <div className="card-body pt-0 container-fluid">
         <div className="row">
           <div className="col-12 col-lg-6">
-            <span className="lead price d-inline-block">${price.toFixed(2)}</span>
+            <span className="lead price d-inline-block">
+              ${price.toFixed(2)}
+            </span>
           </div>
           <div className="col-12 col-lg-6">
             <button
